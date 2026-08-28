@@ -25,7 +25,8 @@ images:
     version_regex: '^(?P<version>\d{4})(?P<month>\d{2})(?P<day>\d{2})$'
     version_template: '{version}.{month}.{day}'
     delivery:
-      mode: lazycat
+      mode: mirror
+      require_digest_match: true
 
 stores:
   official:

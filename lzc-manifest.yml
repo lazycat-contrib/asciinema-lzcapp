@@ -6,7 +6,7 @@ application:
 
 services:
   asciinema:
-    image: ghcr.io/asciinema/asciinema-server:20251114
+    image: ghcr.1ms.run/asciinema/asciinema-server:20251114
     environment:
       - SECRET_KEY_BASE={{ .U.secret_key_base }}
       - URL_HOST={{ if .U.url_host }}{{ .U.url_host }}{{ else }}{{ .S.AppDomain }}{{ end }}
