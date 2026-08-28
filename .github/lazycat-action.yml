@@ -21,7 +21,7 @@ images:
     source: ghcr.io/asciinema/asciinema-server
     channel: custom
     sort: semver
-    tag_regex: '^(?P<version>\d{8})$'
+    tag_regex: '^\d{8}$'
     version_regex: '^(?P<version>\d{4})(?P<month>\d{2})(?P<day>\d{2})$'
     version_template: '{version}.{month}.{day}'
     delivery:
