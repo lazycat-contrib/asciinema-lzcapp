@@ -17,8 +17,7 @@ services:
     binds:
       - /lzcapp/var/asciinema:/var/lib/asciinema
     depends_on:
-      postgres:
-        condition: service_healthy
+      - postgres
   postgres:
     image: registry.lazycat.cloud/czyt/library/postgres:bc75bb4e26564157
     environment:
