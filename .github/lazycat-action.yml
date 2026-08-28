@@ -1,0 +1,35 @@
+version: 1
+
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: dist/asciinema.lpk
+  target_arch: amd64
+
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: asciinema
+
+images:
+  - id: asciinema
+    target: service
+    service: asciinema
+    source: ghcr.io/asciinema/asciinema-server
+    channel: custom
+    sort: semver
+    tag_regex: '^(?P<version>\d{8})$'
+    version_regex: '^(?P<version>\d{4})(?P<month>\d{2})(?P<day>\d{2})$'
+    version_template: '{version}.{month}.{day}'
+    delivery:
+      mode: lazycat
+
+stores:
+  official:
+    enabled: false
+  private:
+    enabled: true
+    skip_if_version_exists: true

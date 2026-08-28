@@ -1,0 +1,38 @@
+application:
+  subdomain: asciinema
+  upstreams:
+    - location: /
+      backend: http://asciinema:4000/
+
+services:
+  asciinema:
+    image: ghcr.io/asciinema/asciinema-server:20251114
+    environment:
+      - SECRET_KEY_BASE={{ .U.secret_key_base }}
+      - URL_HOST={{ if .U.url_host }}{{ .U.url_host }}{{ else }}{{ .S.AppDomain }}{{ end }}
+      - URL_SCHEME={{ .U.url_scheme }}
+      - SMTP_HOST={{ .U.smtp_host }}
+      - SMTP_USERNAME={{ .U.smtp_username }}
+      - SMTP_PASSWORD={{ .U.smtp_password }}
+    binds:
+      - /lzcapp/var/asciinema:/var/lib/asciinema
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: registry.lazycat.cloud/czyt/library/postgres:bc75bb4e26564157
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    binds:
+      - /lzcapp/var/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U postgres
+      interval: 2s
+      timeout: 5s
+      retries: 10
+
+usage: |
+  Open Asciinema to host and share terminal session recordings. Configure SMTP if you want email delivery.

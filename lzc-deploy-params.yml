@@ -1,0 +1,60 @@
+params:
+  - id: secret_key_base
+    type: secret
+    name: "Secret Key Base"
+    description: "Secret key used to sign and encrypt Asciinema data"
+    default_value: "$random(len=64)"
+    optional: false
+
+  - id: url_host
+    type: string
+    name: "URL Host"
+    description: "Public hostname without scheme; leave empty to use the LazyCat assigned domain"
+    default_value: ""
+    optional: true
+
+  - id: url_scheme
+    type: string
+    name: "URL Scheme"
+    description: "Public URL scheme, usually https"
+    default_value: "https"
+    optional: false
+
+  - id: smtp_host
+    type: string
+    name: "SMTP Host"
+    description: "SMTP server hostname for sending account emails"
+    optional: true
+
+  - id: smtp_username
+    type: string
+    name: "SMTP Username"
+    description: "SMTP authentication username"
+    optional: true
+
+  - id: smtp_password
+    type: secret
+    name: "SMTP Password"
+    description: "SMTP authentication password"
+    optional: true
+
+locales:
+  zh:
+    secret_key_base:
+      name: "密钥"
+      description: "用于签名和加密 Asciinema 数据的密钥"
+    url_host:
+      name: "URL Host"
+      description: "不含协议的公网域名；留空则使用懒猫分配的域名"
+    url_scheme:
+      name: "URL 协议"
+      description: "公网 URL 协议，通常为 https"
+    smtp_host:
+      name: "SMTP 主机"
+      description: "用于发送账户邮件的 SMTP 服务器"
+    smtp_username:
+      name: "SMTP 用户名"
+      description: "SMTP 认证用户名"
+    smtp_password:
+      name: "SMTP 密码"
+      description: "SMTP 认证密码"
