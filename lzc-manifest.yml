@@ -1,5 +1,12 @@
 application:
   subdomain: asciinema
+  entries:
+    - id: main
+      title: Asciinema
+      path: /
+    - id: admin
+      title: Admin Panel
+      path: /admin
   upstreams:
     - location: /
       backend: http://asciinema:4000/
@@ -10,10 +17,27 @@ services:
     environment:
       - SECRET_KEY_BASE={{ .U.secret_key_base }}
       - URL_HOST={{ if .U.url_host }}{{ .U.url_host }}{{ else }}{{ .S.AppDomain }}{{ end }}
+      - URL_PORT={{ .U.url_port }}
       - URL_SCHEME={{ .U.url_scheme }}
+      - SIGN_UP_DISABLED={{ .U.sign_up_disabled }}
+      - DEFAULT_AVATAR={{ .U.default_avatar }}
+      - CONTACT_EMAIL_ADDRESS={{ .U.contact_email_address }}
+      - ADMIN_PANEL_ON_MAIN_ENDPOINT={{ .U.admin_panel_on_main_endpoint }}
+      - TZ={{ .U.time_zone }}
       - SMTP_HOST={{ .U.smtp_host }}
+      - SMTP_PORT={{ .U.smtp_port }}
       - SMTP_USERNAME={{ .U.smtp_username }}
       - SMTP_PASSWORD={{ .U.smtp_password }}
+      - SMTP_TLS={{ .U.smtp_tls }}
+      - SMTP_AUTH={{ .U.smtp_auth }}
+      - SMTP_NO_MX_LOOKUPS={{ .U.smtp_no_mx_lookups }}
+      - MAIL_FROM_ADDRESS={{ .U.mail_from_address }}
+      - MAIL_REPLY_TO_ADDRESS={{ .U.mail_reply_to_address }}
+      - S3_BUCKET={{ .U.s3_bucket }}
+      - S3_ENDPOINT={{ .U.s3_endpoint }}
+      - S3_ACCESS_KEY_ID={{ .U.s3_access_key_id }}
+      - S3_SECRET_ACCESS_KEY={{ .U.s3_secret_access_key }}
+      - S3_REGION={{ .U.s3_region }}
     binds:
       - /lzcapp/var/asciinema:/var/lib/asciinema
     depends_on:

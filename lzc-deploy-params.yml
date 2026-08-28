@@ -20,10 +20,57 @@ params:
     default_value: "https"
     optional: false
 
+  - id: url_port
+    type: string
+    name: "URL Port"
+    description: "Public URL port for generated links; leave empty for the standard port"
+    optional: true
+
+  - id: sign_up_disabled
+    type: bool
+    name: "Disable Public Signups"
+    description: "Disable new user registration and allow existing users to log in only"
+    default_value: "false"
+    optional: false
+
+  - id: default_avatar
+    type: string
+    name: "Default Avatar"
+    description: "Avatar provider: identicon (default) or gravatar"
+    default_value: "identicon"
+    optional: true
+
+  - id: contact_email_address
+    type: string
+    name: "Admin Contact Email"
+    description: "Administrator contact address shown on the About page"
+    optional: true
+
+  - id: admin_panel_on_main_endpoint
+    type: bool
+    name: "Enable Admin Panel"
+    description: "Expose the admin panel at /admin on the main endpoint for admin users"
+    default_value: "false"
+    optional: false
+
+  - id: time_zone
+    type: string
+    name: "Time Zone"
+    description: "IANA time zone for local timestamps, for example Europe/Berlin; default is UTC"
+    default_value: "UTC"
+    optional: true
+
   - id: smtp_host
     type: string
     name: "SMTP Host"
     description: "SMTP server hostname for sending account emails"
+    optional: true
+
+  - id: smtp_port
+    type: string
+    name: "SMTP Port"
+    description: "SMTP server port, usually 587"
+    default_value: "587"
     optional: true
 
   - id: smtp_username
@@ -36,6 +83,70 @@ params:
     type: secret
     name: "SMTP Password"
     description: "SMTP authentication password"
+    optional: true
+
+  - id: smtp_tls
+    type: string
+    name: "SMTP TLS Mode"
+    description: "SMTP TLS mode: always, never, or if_available"
+    default_value: "if_available"
+    optional: true
+
+  - id: smtp_auth
+    type: string
+    name: "SMTP Auth Mode"
+    description: "SMTP authentication mode: always or if_available"
+    default_value: "if_available"
+    optional: true
+
+  - id: smtp_no_mx_lookups
+    type: bool
+    name: "Disable SMTP MX Lookups"
+    description: "Connect directly to the configured SMTP server without MX lookups"
+    default_value: "false"
+    optional: false
+
+  - id: mail_from_address
+    type: string
+    name: "Mail From Address"
+    description: "From header address; defaults to hello at the configured host"
+    optional: true
+
+  - id: mail_reply_to_address
+    type: string
+    name: "Mail Reply-To Address"
+    description: "Reply-To header address; defaults to admin at the configured host"
+    optional: true
+
+  - id: s3_bucket
+    type: string
+    name: "S3 Bucket"
+    description: "S3-compatible object storage bucket; leave empty to use local filesystem"
+    optional: true
+
+  - id: s3_endpoint
+    type: string
+    name: "S3 Endpoint"
+    description: "S3-compatible endpoint, for example an R2 or MinIO HTTPS URL"
+    optional: true
+
+  - id: s3_access_key_id
+    type: string
+    name: "S3 Access Key ID"
+    description: "S3-compatible object storage access key"
+    optional: true
+
+  - id: s3_secret_access_key
+    type: secret
+    name: "S3 Secret Access Key"
+    description: "S3-compatible object storage secret key"
+    optional: true
+
+  - id: s3_region
+    type: string
+    name: "S3 Region"
+    description: "S3 region, for example us-east-1 or auto for Cloudflare R2"
+    default_value: "us-east-1"
     optional: true
 
 locales:

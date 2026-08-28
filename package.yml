@@ -10,9 +10,13 @@ locales:
   zh:
     name: Asciinema
     description: 托管和分享终端会话录制的平台
+    entries.main.title: Asciinema
+    entries.admin.title: 管理后台
   en:
     name: Asciinema
     description: Platform for hosting and sharing terminal session recordings
+    entries.main.title: Asciinema
+    entries.admin.title: Admin Panel
 permissions:
   required:
     - net.internet
