@@ -8,6 +8,8 @@ application:
       title: Admin Panel
       path: /admin
   upstreams:
+    - location: /admin
+      backend: http://asciinema:4002/
     - location: /
       backend: http://asciinema:4000/
 services:

@@ -31,7 +31,7 @@ params:
     name: "Disable Public Signups"
     description: "Disable new user registration and allow existing users to log in only"
     default_value: "false"
-    optional: false
+    optional: true
 
   - id: default_avatar
     type: string
@@ -51,7 +51,7 @@ params:
     name: "Enable Admin Panel"
     description: "Expose the admin panel at /admin on the main endpoint for admin users"
     default_value: "false"
-    optional: false
+    optional: true
 
   - id: time_zone
     type: string
@@ -104,7 +104,7 @@ params:
     name: "Disable SMTP MX Lookups"
     description: "Connect directly to the configured SMTP server without MX lookups"
     default_value: "false"
-    optional: false
+    optional: true
 
   - id: mail_from_address
     type: string
