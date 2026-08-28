@@ -1,12 +1,11 @@
 package: community.lazycat.app.asciinema
-version: 20251114.0.0
+version: 20260626.0.0
 name: Asciinema
 description: Platform for hosting and sharing terminal session recordings
 min_os_version: 1.5.0
 homepage: https://asciinema.org
 author: Asciinema Team
 license: Apache-2.0
-
 locales:
   zh:
     name: Asciinema
@@ -14,7 +13,6 @@ locales:
   en:
     name: Asciinema
     description: Platform for hosting and sharing terminal session recordings
-
 permissions:
   required:
     - net.internet

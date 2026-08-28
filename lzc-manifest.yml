@@ -3,10 +3,10 @@ application:
   upstreams:
     - location: /
       backend: http://asciinema:4000/
-
 services:
   asciinema:
-    image: ghcr.1ms.run/asciinema/asciinema-server:20251114
+    # upstream: ghcr.io/asciinema/asciinema-server:20260626
+    image: ghcr.1ms.run/asciinema/asciinema-server:20260626
     environment:
       - SECRET_KEY_BASE={{ .U.secret_key_base }}
       - URL_HOST={{ if .U.url_host }}{{ .U.url_host }}{{ else }}{{ .S.AppDomain }}{{ end }}
@@ -19,7 +19,6 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-
   postgres:
     image: registry.lazycat.cloud/czyt/library/postgres:bc75bb4e26564157
     environment:
@@ -33,6 +32,5 @@ services:
       interval: 2s
       timeout: 5s
       retries: 10
-
 usage: |
   Open Asciinema to host and share terminal session recordings. Configure SMTP if you want email delivery.
